@@ -1,0 +1,125 @@
+html,
+body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    justify-content: space-between;
+}
+
+.container {
+    max-width: $containerWidth;
+    margin: 0 auto;
+    position: relative;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    li {
+        list-style: none;
+    }
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1 {
+    font-family: $baseFont;
+    font-style: normal;
+    font-weight: 500;
+    font-size: $h1FontSize;
+    line-height: 120%;
+    text-transform: uppercase; 
+    color: $textColor;
+}
+
+h2 {
+    font-family: $baseFont;
+    font-style: normal;
+    font-weight: 600;
+    font-size: $h2FontSize;
+    line-height: 150%;
+    color: $backgroundColor;
+}
+
+
+h3 {
+    font-family: $baseFont;
+    font-style: normal;
+    font-weight: 500;
+    font-size: $h3FontSize;
+    line-height: 150%;
+    text-transform: uppercase;
+    color: $textColor;
+}
+
+h4 {
+    font-family: $baseFont;
+    font-style: normal;
+    font-weight: 400;
+    font-size: $h4FontSize;
+    line-height: 150%;
+    color: $textColor;
+}
+
+h5 {
+    font-family: $baseFont;
+    font-style: normal;
+    font-weight: 300;
+    font-size: $h4FontSize;
+    line-height: 150%;
+    color: $pColor;
+}
+
+h6 {
+    font-family: $baseFont;
+    font-style: normal;
+    font-weight: 400;
+    font-size: $h5FontSize;
+    line-height: 130%;
+    color: $pColor;
+}
+
+p {
+    font-family: $baseFont;
+    font-style: normal;
+    font-weight: 700;
+    font-size: $pFontSize;
+    line-height: $pColor;
+    letter-spacing: 0.15em;
+    color: $backgroundColor;
+}

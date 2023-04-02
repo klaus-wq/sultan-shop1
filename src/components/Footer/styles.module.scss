@@ -1,0 +1,132 @@
+@import "../../scss/main.scss";
+
+.footer {
+
+    &__background {
+        background: $pColor;
+    }
+
+    &__container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-between;
+        background: $pColor;
+        padding: 3% 6%;
+    }
+
+    &__block {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    &__arrow {
+        cursor: pointer;
+    }
+
+    &__text {
+        color: $backgroundColor;
+    }
+
+    &__msg {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &__title {
+        margin-bottom: 25px;
+    }
+
+    &__description {
+        margin-bottom: 45px;
+    }
+
+    &__margin {
+        margin-bottom: 15px;
+    }
+
+    &__margin20 {
+        margin-bottom: 20px;
+    }
+
+    &__tel {
+        font-weight: 600;
+        color: $backgroundColor;
+    }
+
+    &__underline {
+        text-decoration: underline;
+        font-weight: 400;
+    }
+
+    &__contacts {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        align-items: flex-start;
+        margin-bottom: 25px;
+    }
+
+    &__search {
+        margin-bottom: 30px;
+        background: #FFFF;
+    }
+
+    &__input {
+        background: #FFFF;
+    }
+}
+
+@media (max-width: 1093px) {
+    .footer__hide {
+        display: none;
+    }
+
+    .footer {
+
+        &__container {
+            padding: 3% 4%;
+        }
+
+        &__logo {
+            max-height: 41px;
+        }
+
+        &__last {
+            display: flex;
+            flex-direction: row;
+        }
+
+        &__text {
+            font-size: $h5FontSize;
+        }
+
+        &__button {
+            padding: 12px 29px;
+        }
+
+        &__button_text {
+            font-size: $h5FontSize;
+        }
+
+        &__flex {
+            display: flex;
+            gap: 20px;
+        }
+
+        &__description {
+            margin-bottom: 15px;
+        }
+    }
+}
+
+@media (min-width: 1093px) {
+    .footer__mobile {
+        display: none;
+    }
+}

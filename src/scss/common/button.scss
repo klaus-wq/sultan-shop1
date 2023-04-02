@@ -1,0 +1,38 @@
+.button {
+    background: $btnColor;
+    border-radius: 79px;
+    padding: 20px 54px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: none;
+
+    &__input {
+        background: $inputColor;
+        border: none;
+        outline: none;
+        color: $placeholderColor;
+        // padding: 20px;
+    }
+
+    &__text {
+        font-weight: 700;
+        color: $backgroundColor;
+    }
+
+    &__show {
+        padding: 20px 50px;
+    }
+
+    &__clear {
+        padding: 17px;
+    }
+
+    &__cart {
+        padding: 16px 25px;
+    }
+}
+
+button:hover {
+    cursor: pointer;
+}

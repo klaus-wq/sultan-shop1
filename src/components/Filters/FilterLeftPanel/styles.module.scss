@@ -1,0 +1,146 @@
+@import "../../../scss/main.scss";
+
+.left {
+
+    &__container {
+        margin-right: 30px;
+    }
+
+    &__block {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+
+    &__line {
+        color: $pColor;
+        font-weight: 500;
+    }
+
+    &__min {
+        text-align: center;
+        color: $pColor;
+        outline: none;
+        border: none;
+        background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
+        border-radius: 1000px;
+        width: 100px;
+        height: 23px;
+        font-weight: 300;
+        font-size: $h5FontSize;
+    }
+
+    &__params {
+        margin-bottom: 10px;
+    }
+
+    &__price {
+        margin-bottom: 16px;
+    }
+
+    &__manufacturer {
+        text-transform: none;
+        margin-bottom: 15px;
+    }
+
+    &__search {
+        margin-bottom: 15px;
+    }
+
+    &__checkbox {
+        color: $pColor;
+        margin-bottom: 5px;
+    }
+
+    &__show {
+        border: none;
+        background: $backgroundColor;
+        padding: 0;
+        color: $pColor;
+        font-weight: 500;
+        font-size: $h5FontSize;
+        padding-bottom: 20px;
+    }
+
+    &__arrow {
+        padding-left: 5px;
+    }
+
+    &__dashed {
+        border-bottom: 1px dashed rgb(63 78 101 / 20%);
+        margin-bottom: 20px;
+    }
+
+    &__care {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        cursor: pointer;
+    }
+
+    &__buttons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 40px;
+    }
+
+    &__manufacturers {
+        padding-left: 10px;
+    }
+
+    &__input {
+        gap: 0;
+    }
+
+    &__mobilebutton {
+        display: grid;
+        border-Radius: 16px;
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);;
+        margin-left: 10px;
+    }
+
+    &__mobilebutton>svg {
+        margin: auto;
+    }
+
+    &__hide {}
+
+    &__mobile {
+        display: flex;
+        align-items: baseline;
+        padding-bottom: 15px;
+    }
+
+}
+
+.bold {
+    font-weight: 700;
+}
+
+
+@media (max-width: 720px) {
+    .left {
+
+        &__container {
+            margin: auto;
+        }
+
+        &__hide {
+            display: none;
+        }
+
+    }
+}
+
+@media (min-width: 720px) {
+    .left {
+        &__mobilebutton {
+            display: none;
+        }
+    }
+}

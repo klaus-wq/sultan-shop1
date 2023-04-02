@@ -1,0 +1,25 @@
+$containerWidth: 1370px;
+$h1FontSize: 40px;
+$h2FontSize: 20px;
+$h3FontSize: 16px;
+$h4FontSize: 14px;
+$h5FontSize: 12px;
+$pFontSize: 10px;
+
+$backgroundColor: #FFFFFF;
+$textColor: #111111;
+$pColor: #3F4E65;
+$inputColor: #EDEDED;
+$btnColor: #FFC85E;
+$placeholderColor: #5C6370;
+$searchColor: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
+
+$baseFont: 'Inter';
+
+@import "https://necolas.github.io/normalize.css/latest/normalize.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "layout";
+@import "./common/button.scss";
+@import "./common/input.scss";

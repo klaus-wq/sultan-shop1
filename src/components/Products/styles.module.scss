@@ -1,0 +1,103 @@
+@import "../../scss/main.scss";
+
+.products {
+    &__container {
+        padding: 50px 14px;
+    }
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    &__sort {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+        margin: 10px;
+        margin-left: auto;
+    }
+
+    &__select {
+        font-family: $baseFont;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+
+    &__title {
+        text-transform: none;
+    }
+
+    &__arrows {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &__arrow {
+        border: none;
+        background-color: $backgroundColor;
+        padding: 0;
+        width: 30px;
+    }
+
+    &__block {
+        width: 100%;
+        display: grid;
+    }
+
+    &__parentblock {
+        display: flex;
+    }
+
+    &__pages {
+        display: flex;
+        align-items: center;
+        gap: 35px;
+        margin: auto;
+    }
+
+    &__page {
+        font-weight: 500;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        display: grid;
+    }
+
+    &__page>span {
+        margin: auto;
+    }
+
+    &__pageActive {
+        background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
+    }
+
+    &__cards {
+        display: flex;
+        align-items: center;
+        margin-bottom: 50px;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width : 720px) {
+    .products {
+        &__top > h1 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        &__parentblock {
+            flex-wrap: wrap;
+        }
+    }
+
+}

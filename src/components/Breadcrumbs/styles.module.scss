@@ -1,0 +1,33 @@
+@import "../../scss/main.scss";
+
+.breadcrumbs {
+
+    &__container {
+        display: flex;
+        padding: 40px 14px 0 14px;
+    }
+    
+    &__link {
+        color: rgb(63 78 101 / 50%);
+
+        &::before {
+            content: "";
+            border: 1px dashed $pColor;
+            margin: 0 10px;
+            opacity: 0.1;
+            height: 200%;
+        }
+
+        &:hover {
+            color: $pColor;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .breadcrumbs {
+        &__container {
+            display: none;
+        }
+    }
+}

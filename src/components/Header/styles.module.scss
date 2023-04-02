@@ -1,0 +1,132 @@
+@import "../../scss/main.scss";
+
+.header {
+
+    &__container {
+    }
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px;
+        border-bottom: 1px solid rgb(63 78 101 / 20%);
+    }
+
+    &__section {
+        display: flex;
+        gap: 15px;
+    }
+
+    &__block {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    &__list {
+        display: flex;
+        // gap: 30px;
+    }
+
+    &__bold {
+        font-weight: 600;
+    }
+
+    &__underline {
+        color: $pColor;
+        text-decoration: underline;
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 150%;
+    }
+
+    &__basket {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+}
+
+.dashed {
+
+    &::before {
+        content: "";
+        border: 1px dashed $pColor;
+        margin: 0 10px;
+        opacity: 0.1;
+        height: 200%;
+    }
+}
+
+.circle {
+    position: absolute;
+    background: #FFC85E;
+    border: 3px solid #FFFFFF;
+    width: 26px;
+    height: 26px;
+    border-radius: 13px;
+    top: -5%;
+    right: -16%;
+    text-align: center;
+    vertical-align: middle;
+
+    &__text {
+        font-weight: 700;
+        color: #FFFFFF;
+    }
+}
+
+.header {
+    &_mobile {
+
+        &__up {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(63, 78, 101, 0.2);
+            padding: 10px 14px;
+        }
+
+        &__bottom {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-bottom: 1px solid rgba(63, 78, 101, 0.2);
+            padding: 12px;
+        }
+
+        &__block {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        &__text {
+            font-weight: 600;
+        }
+
+        &__menu {
+            cursor: pointer;
+        }
+
+        &__dashed {
+            height: 30px;
+            border-right: 1px dashed rgb(63 78 101 / 20%);
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .header__top {
+        display: none;
+    }
+}
+
+@media (min-width: 1200px) {
+    .header_mobile {
+        display: none;
+    }
+}

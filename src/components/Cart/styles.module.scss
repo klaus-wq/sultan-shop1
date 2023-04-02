@@ -1,0 +1,124 @@
+@import "../../scss/main.scss";
+
+.cart {
+    &__container {
+        padding: 50px 14px;
+    }
+
+    &__title {
+        padding-bottom: 50px;
+        border-bottom: 1px dashed rgba(63, 78, 101, 0.2);
+    }
+
+    &__block {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 50px 0;
+        border-bottom: 1px dashed rgba(63, 78, 101, 0.2);
+        flex-wrap: wrap;
+    }
+
+    &__name {
+        font-size: 30px;
+        color: $textColor;
+        font-weight: 700;
+    }
+
+    &__img {
+        max-height: 190px;
+    }
+
+    &__measurement {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    &__right {
+        display: flex;
+        max-width: 780px;
+    }
+
+    &__buttons {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 44px;
+        padding-top: 6px;
+    }
+
+    &__items {
+        margin-bottom: 50px;
+    }
+
+    &__bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__number {
+        color: $pColor;
+        font-weight: 500;
+    }
+
+    &__circle {
+        width: 34px;
+        height: 23px;
+        background: linear-gradient(90deg, rgba(255, 198, 80, 0.3) 0%, rgba(254, 202, 110, 0.3) 97.25%);
+        border-radius: 20px;
+        border: none;
+    }
+
+    &__price {
+        white-space: nowrap;
+    }
+
+    &__dashed {
+        height: 50px;
+        border-right: 1px dashed rgb(63 78 101 / 20%);
+    }
+}
+
+@media (max-width: 1440px) {
+    .cart {
+        &__block {
+            justify-content: center;
+        }
+    }
+}
+
+@media (max-width: 1315px) {
+    .cart {
+        &__buttons {
+            margin: auto;
+            gap: 44px;
+        }
+    }
+}
+
+@media (max-width: 560px) {
+    .cart {
+        &__right {
+            display: block;
+        }
+
+        &__buttons {
+            margin: auto;
+            gap: 10px;
+        }
+
+        &__name {
+            font-size: 20px;
+        }
+
+        &__center {
+            text-align: center;
+        }
+
+        &__title {
+            font-size: $h2FontSize;
+        }
+    }
+}
