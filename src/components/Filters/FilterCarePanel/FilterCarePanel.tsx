@@ -8,10 +8,10 @@ export interface FilterProps {
 export default function FilterCarePanel({ filter }: FilterProps) {
     return (
         <div className={styles.care__container}>
-            {Object.values(filter.CareTypes).map((t, i) => (
+            {Object.values(filter.careTypes).map((t, i) => (
                 <>
                     <div style={{background: filter.selectedCareType === i ? "#EDEDED" : ''}} className={styles.care__filter} 
-                    onClick={() => { filter.SelectCareType(i) }}>{t}</div>
+                    onClick={() => { filter.selectCareType(i) }}>{t}</div>
                 </>
             ))}
         </div>

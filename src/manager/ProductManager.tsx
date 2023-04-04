@@ -1,4 +1,4 @@
-import { GetProducts, Product } from '../data/productsdata';
+import { getProducts, Product } from '../data/productsData';
 import FilterManager from './FilterManager';
 
 export default class ProductManager {
@@ -8,11 +8,11 @@ export default class ProductManager {
 
     readonly localStoreName: string = "products";
 
-    GetfilteredProducts() {
+    getfilteredProducts() {
         return this.filterManager.filteredProducts;
     }
 
-    async LoadProducts() {
+    async loadProducts() {
         let products: Product[];
         let local = localStorage.getItem(this.localStoreName);
         if (local !== null) {
@@ -21,19 +21,19 @@ export default class ProductManager {
                 products = loaded;
             }
             else {
-                products = await GetProducts();
+                products = await getProducts();
             }
         }
         else {
-            products = await GetProducts();
+            products = await getProducts();
         }
-        this.filterManager.UpdateFilterData(products);
+        this.filterManager.updateFilterData(products);
         this.inLoading = false;
         console.log("ProductsLoaded");
         this.onLoading();
     }
 
-    async SaveProduct(product: Product) {
+    async saveProduct(product: Product) {
         let find = this.filterManager.products.findIndex(P => P.id === product.id);
         if (find >= 0) {
             this.filterManager.products[find] = product;
@@ -41,23 +41,23 @@ export default class ProductManager {
         else {
             this.filterManager.products.push(product);
         }
-        this.Update();
+        this.update();
     }
 
-    async DeleteProduct(product: Product) {
+    async deleteProduct(product: Product) {
         let find = this.filterManager.products.findIndex(P => P.id === product.id);
         if (find >= 0) {
             this.filterManager.products.splice(find, 1);
-            this.Update();
+            this.update();
         }
     }
 
-    Update() {
-        this.filterManager.UpdateFilterData();
+    update() {
+        this.filterManager.updateFilterData();
         localStorage.setItem(this.localStoreName, JSON.stringify(this.filterManager.products));
     }
 
-    GetProductById(id: number) {
+    getProductById(id: number) {
         if (this.inLoading) {
             throw "Не загружено...";
         }

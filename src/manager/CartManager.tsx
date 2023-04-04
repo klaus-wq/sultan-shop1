@@ -1,4 +1,4 @@
-import { Product } from '../data/productsdata'
+import { Product } from '../data/productsData'
 
 type CartElement = {
     id: number;
@@ -27,7 +27,7 @@ export default class CartManager {
             let New: CartElement = { id: product.id, count: 1 };
             this.elements.push(New);
         }
-         this.summTotal += product.price;
+        this.summTotal += product.price;
         this.countTotal++;
         this.onCartUpdated();
     }

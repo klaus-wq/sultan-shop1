@@ -13,18 +13,18 @@ export interface ProductsProps {
 }
 
 function Products({ manager }: ProductsProps) {
-    const [state, setstate] = useState(false);
+    const [state, setState] = useState(false);
     const [sortType, setSortType] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
     const productsPerPage: number = 15;
 
     manager.productsManager.filterManager.onProductsUpdated = () => {
-        setstate(!state);
+        setState(!state);
     }
 
     function getPageNumbers() {
         let pageArray = []
-        let countPages = manager.productsManager.GetfilteredProducts().length / productsPerPage
+        let countPages = manager.productsManager.getfilteredProducts().length / productsPerPage
         for (let i = 1; i < countPages + 1; i++) {
             pageArray.push(i)
         }
@@ -54,8 +54,8 @@ function Products({ manager }: ProductsProps) {
                     <div className={styles.products__cards}>
                         {
                             manager.productsManager.inLoading ? <h3>Loading...</h3> :
-                                manager.productsManager.GetfilteredProducts().length > 0 ?
-                                    manager.productsManager.GetfilteredProducts()
+                                manager.productsManager.getfilteredProducts().length > 0 ?
+                                    manager.productsManager.getfilteredProducts()
                                         .sort((a, b) => {
                                             switch (sortType) {
                                                 case 0:

@@ -1,31 +1,31 @@
 import { useState } from "react";
-import { Product } from "../../data/productsdata";
+import { Product } from "../../data/productsData";
 import { ProductsProps } from "../Products/Products";
 import EditProduct from "./EditProduct";
 
 export default function Admin({ manager }: ProductsProps) {
-    const [update, setupdate] = useState(false);
-    function Update() {
-        setupdate(!update);
+    const [_update, setUpdate] = useState(false);
+    function update() {
+        setUpdate(!_update);
     }
     const [currentProduct, setCurrentProduct] = useState<Product>();
 
-    function Save(product: Product) {
-        manager.productsManager.SaveProduct(product);
-        Update();
+    function save(product: Product) {
+        manager.productsManager.saveProduct(product);
+        update();
     }
 
-    function Delete(product: Product) {
-        manager.productsManager.DeleteProduct(product);
-        Update();
+    function _delete(product: Product) {
+        manager.productsManager.deleteProduct(product);
+        update();
     }
 
-    function CreateNew() {
-        let lastindex = 0;
-        manager.productsManager.filterManager.products.forEach(p => lastindex = Math.max(p.id, lastindex));
-        lastindex++;
+    function createNew() {
+        let lastIndex = 0;
+        manager.productsManager.filterManager.products.forEach(p => lastIndex = Math.max(p.id, lastIndex));
+        lastIndex++;
         setCurrentProduct({
-            id: lastindex,
+            id: lastIndex,
             price: 0,
             care: [] as Number[]
         } as Product);
@@ -40,19 +40,19 @@ export default function Admin({ manager }: ProductsProps) {
                         <button style={{ margin: "4px", }}
                             onClick={() => { setCurrentProduct(p) }}>Редактировать</button>
                         <button style={{ margin: "4px", }} onClick={() => {
-                            Delete(p);
+                            _delete(p);
                         }} >Удалить</button>
                     </div>
                 </div>
             ))}
             <div>
-                <button onClick={CreateNew}><h3>Создать новый</h3></button>
+                <button onClick={createNew}><h3>Создать новый</h3></button>
             </div>
 
             <div style={{ margin: "10px" }}>
                 <h3>Редактирование:</h3>
                 {currentProduct !== undefined ?
-                    <EditProduct item={currentProduct} manager={manager} onsave={Save} />
+                    <EditProduct item={currentProduct} manager={manager} onSave={save} />
                     : <span>Выберите продукт</span>}
             </div>
         </div>

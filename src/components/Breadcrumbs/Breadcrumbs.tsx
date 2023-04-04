@@ -5,12 +5,13 @@ import { ProductsProps } from '../Products/Products'
 
 export default function Breadcrumbs({ manager }: ProductsProps) {
     let Location = useLocation();
-    function GetName(url: string) {
+    
+    function getName(url: string) {
         switch (url) {
             case "cart":
                 return "Корзина";
             case "product":
-                return "Продукт " + GetProductName();
+                return "Продукт " + getProductName();
             case "admin":
                 return "Админка";
             case "/":
@@ -20,7 +21,7 @@ export default function Breadcrumbs({ manager }: ProductsProps) {
         }
     }
 
-    function GetPathArray() {
+    function getPathArray() {
         let arr = window.location.pathname.split("/").filter(p => p !== "");
 
         if (arr.length <= 0) {
@@ -34,15 +35,15 @@ export default function Breadcrumbs({ manager }: ProductsProps) {
         return arr;
     }
 
-    function GetProductName() {
+    function getProductName() {
         const urlParams = new URLSearchParams(window.location.search);
         let idParam = urlParams.get('id');
         if (idParam !== null) {
-            return manager.productsManager.GetProductById(parseInt(idParam))?.name
+            return manager.productsManager.getProductById(parseInt(idParam))?.name
         }
     }
 
-    function GetLink(link: string) {
+    function getLink(link: string) {
         if (link === "product") {
             return window.location.href;
         }
@@ -57,10 +58,10 @@ export default function Breadcrumbs({ manager }: ProductsProps) {
             <div>
                 <NavLink to="/"><h5>Главная</h5></NavLink>
             </div>
-            {GetPathArray().map((p, i) =>
+            {getPathArray().map((p, i) =>
             (
                 <div key={i}>
-                    <NavLink to={GetLink(p)}><h5 className={styles.breadcrumbs__link}>{GetName(p)}</h5></NavLink>
+                    <NavLink to={getLink(p)}><h5 className={styles.breadcrumbs__link}>{getName(p)}</h5></NavLink>
                 </div>
             ))}
         </div>

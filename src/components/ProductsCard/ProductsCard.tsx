@@ -7,7 +7,7 @@ import download from '../../assets/img/icons/download--black.svg'
 import share from '../../assets/img/icons/share.svg'
 import styles from './styles.module.scss'
 import { ProductsProps } from '../Products/Products'
-import { Product } from '../../data/productsdata'
+import { Product } from '../../data/productsData'
 
 export default function ProductsCard({ manager }: ProductsProps) {
     const [_updateState, setUpdateState] = useState(false);
@@ -24,7 +24,7 @@ export default function ProductsCard({ manager }: ProductsProps) {
         const urlParams = new URLSearchParams(window.location.search);
         let idParam = urlParams.get('id');
         if (idParam != null) {
-            setProduct(manager.productsManager.GetProductById(parseInt(idParam)))
+            setProduct(manager.productsManager.getProductById(parseInt(idParam)))
             updateState();
         }
         setInLoading(false);

@@ -3,12 +3,11 @@ import { NavLink } from 'react-router-dom'
 import cartIcon from '../../assets/img/icons/basket--white.svg'
 import CartManager from '../../manager/CartManager'
 import styles from './styles.module.scss'
-import { Product } from '../../data/productsdata'
+import { Product } from '../../data/productsData'
 
 export interface CardProps {
   product: Product;
   cart: CartManager
-  //addToCart: (id: number) => void;
 }
 
 function Card({ product, cart }: CardProps) {

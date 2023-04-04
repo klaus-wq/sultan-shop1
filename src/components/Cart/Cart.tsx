@@ -17,7 +17,7 @@ export default function Cart({ manager }: CartProps) {
         setUpdateState(!_updateState)
     }
 
-    function CloseModal() {
+    function closeModal() {
         setModalState(false);
         manager.cartManager.deleteAll();
     }
@@ -68,7 +68,7 @@ export default function Cart({ manager }: CartProps) {
                     </div>
                 </div>
             }
-            {Math.round(manager.cartManager.summTotal) !== 0 && modalState && <Modal onClose={() => { CloseModal(); }} />}
+            {Math.round(manager.cartManager.summTotal) !== 0 && modalState && <Modal onClose={() => { closeModal(); }} />}
         </>
     )
 }

@@ -23,7 +23,6 @@ function Header({ cart }: HeaderProps) {
     const [count, setCount] = useState(0);
 
     cart.onCartUpdated = () => {
-
         setCount(cart.countTotal);
     };
 

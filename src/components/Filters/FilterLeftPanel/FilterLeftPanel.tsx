@@ -11,15 +11,15 @@ export default function FilterLeftPanel({ filter }: FilterProps) {
     const [state, setState] = useState(false);
     const [searchState, setSearchState] = useState('');
     const [showState, setShowState] = useState(4);
-    const [hideAll, setShowAll] = useState(true);
+    const [hideAll, setHideAll] = useState(true);
 
     filter.onFilterUpdated = () => {
         setState(!state);
     };
 
-    function ClearFilter() {
+    function clearFilter() {
         setSearchState('');
-        filter.ClearFilter();
+        filter.clearFilter();
     }
 
     return (
@@ -28,7 +28,7 @@ export default function FilterLeftPanel({ filter }: FilterProps) {
                 <div>
                     <div className={styles.left__mobile}>
                         <h3 className={styles.left__params}>Подбор по параметрам</h3>
-                        <div className={styles.left__mobilebutton} onClick={() => setShowAll(!hideAll)}>
+                        <div className={styles.left__mobilebutton} onClick={() => setHideAll(!hideAll)}>
                             <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 {hideAll ? <path d="M1 1L5 5L9 1" stroke="#3F4E65" /> : <path d="M9 5L5 1L1 5" stroke="#3F4E65" />}
                             </svg>
@@ -65,8 +65,8 @@ export default function FilterLeftPanel({ filter }: FilterProps) {
                                 <div className={styles.left__checkbox}>
                                     <input type='checkbox'
                                         checked={filter.selectedManufacturers.includes(m)}
-                                        onChange={e => { filter.SelectManufacturer(m) }} />
-                                    <span className={styles.left__manufacturers}>{m} ({filter.allManufacturersCount[i]})</span>
+                                        onChange={e => { filter.selectManufacturer(m) }} />
+                                    <span className={styles.left__manufacturers}>{m} ({filter.allManufacturersCount.get(m)})</span>
                                 </div>
                             ))}
                         <button className={styles.left__show} onClick={e => showState === 4 ? setShowState(filter.allManufacturers.length) : setShowState(4)}>
@@ -86,12 +86,12 @@ export default function FilterLeftPanel({ filter }: FilterProps) {
             <div>
                 <div className={styles.left__buttons}>
                     <button className={`${styles.button} ${styles.button__show}`}><h4 className={styles.button__text}>Показать</h4></button>
-                    <button className={`${styles.button} ${styles.button__clear}`} onClick={() => ClearFilter()}><img src={clear} alt="clear" /></button>
+                    <button className={`${styles.button} ${styles.button__clear}`} onClick={() => clearFilter()}><img src={clear} alt="clear" /></button>
                 </div>
                 <div className={styles.left__care}>
-                    {Object.values(filter.CareTypes).map((t, i) => (
+                    {Object.values(filter.careTypes).map((t, i) => (
                         <>
-                            <h4 style={{ color: filter.selectedCareType === i ? "#111111" : '#5C6370' }} onClick={() => { filter.SelectCareType(i) }}>{t}</h4>
+                            <h4 style={{ color: filter.selectedCareType === i ? "#111111" : '#5C6370' }} onClick={() => { filter.selectCareType(i) }}>{t}</h4>
                         </>
                     ))}
                 </div>

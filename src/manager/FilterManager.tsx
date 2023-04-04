@@ -1,4 +1,4 @@
-import { Product } from '../data/productsdata'
+import { Product } from '../data/productsData'
 
 export default class FilterManager {
     products: Product[] = [];
@@ -14,7 +14,7 @@ export default class FilterManager {
 
     public set minPrice(v: number) {
         this._minPrice = v;
-        this.FilterProducts();
+        this.filterProducts();
     }
 
     public get maxPrice(): number {
@@ -23,17 +23,17 @@ export default class FilterManager {
 
     public set maxPrice(v: number) {
         this._maxPrice = v;
-        this.FilterProducts();
+        this.filterProducts();
     }
 
     allManufacturers: string[] = [];
-    allManufacturersCount: number[] = [];
+    allManufacturersCount: Map<string, number> = new Map();
     selectedManufacturers: string[] = [];
     selectedCareType?: number = undefined;
 
     filteredProducts: Product[] = [];
 
-    CareTypes: string[] = [
+    careTypes: string[] = [
         "Уход за телом",
         "Уход за руками",
         "Уход за ногами",
@@ -41,17 +41,17 @@ export default class FilterManager {
         "Уход за волосами"
     ]
 
-    SelectCareType(t?: number) {
+    selectCareType(t?: number) {
         if (this.selectedCareType === t) {
             this.selectedCareType = undefined;
         }
         else {
             this.selectedCareType = t;
         }
-        this.FilterProducts();
+        this.filterProducts();
     }
 
-    SelectManufacturer(m: string) {
+    selectManufacturer(m: string) {
         let index = this.selectedManufacturers.indexOf(m);
         if (index > -1) {
             this.selectedManufacturers.splice(index, 1);
@@ -59,19 +59,15 @@ export default class FilterManager {
         else {
             this.selectedManufacturers.push(m);
         }
-        this.FilterProducts();
+        this.filterProducts();
     }
 
-    Clear() {
-
-    }
-
-    UpdateFilterData(allProducts: Product[] | undefined = undefined) {
+    updateFilterData(allProducts: Product[] | undefined = undefined) {
         if (allProducts !== undefined) {
             this.products = allProducts;
         }
         this.allManufacturers = [];
-        this.allManufacturersCount = [];
+        this.allManufacturersCount.clear();
         this.selectedCareType = undefined;
         this.selectedManufacturers = [];
 
@@ -79,13 +75,14 @@ export default class FilterManager {
         this.minPrice = 10000;
 
         this.products.forEach(p => {
-            let findIndex = this.allManufacturers.indexOf(p.manufacturer);
-            if (findIndex > 0) {
-                this.allManufacturersCount[findIndex]++;
+            let findindex = this.allManufacturers.indexOf(p.manufacturer);
+            if (findindex > 0) {
+                let count = this.allManufacturersCount.get(p.manufacturer);
+                this.allManufacturersCount.set(p.manufacturer, count! + 1);
             }
             else {
                 this.allManufacturers.push(p.manufacturer);
-                this.allManufacturersCount.push(1);
+                this.allManufacturersCount.set(p.manufacturer, 1);
             }
             if (this.maxPrice < p.price) {
                 this.maxPrice = p.price;
@@ -95,10 +92,10 @@ export default class FilterManager {
             }
         });
         this.allManufacturers.sort();
-        this.FilterProducts();
+        this.filterProducts();
     }
 
-    FilterProducts() {
+    filterProducts() {
         this.filteredProducts = this.products.filter(
             p => (p.price >= this.minPrice && p.price <= this.maxPrice)
                 && (this.selectedManufacturers.length === 0 || this.selectedManufacturers.includes(p.manufacturer))
@@ -106,8 +103,8 @@ export default class FilterManager {
         this.onProductsUpdated();
     }
 
-    ClearFilter() {
-        this.UpdateFilterData();
+    clearFilter() {
+        this.updateFilterData();
         this.onProductsUpdated();
     }
 }

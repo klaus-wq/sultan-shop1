@@ -23,7 +23,7 @@ function App() {
   });
 
   useEffect(() => {
-    manager.productsManager.LoadProducts();
+    manager.productsManager.loadProducts();
   }, []);
 
   return (
