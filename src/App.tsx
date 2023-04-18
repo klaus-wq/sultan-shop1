@@ -5,19 +5,19 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Admin from './components/Admin/Admin'
 import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs'
-import Cart from './components/Cart/Cart'
+import { Cart } from './components/Cart/Cart'
 import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
-import Products from './components/Products/Products'
+import { Products } from './components/Products/Products'
 import ProductsCard from './components/ProductsCard/ProductsCard'
 import Manager from './manager/Manager'
 
 function App() {
-  const [IsLoaded, updateloaded] = useState(false);
+  const [isLoaded, updateLoaded] = useState(false);
   const [manager] = useState(() => {
     let mgr = new Manager();
     mgr.productsManager.onLoading = () => {
-      updateloaded(true)
+      updateLoaded(true)
     };
     return mgr;
   });
@@ -28,7 +28,7 @@ function App() {
 
   return (
     <div className="wrapper">
-      {IsLoaded ?
+      {isLoaded ?
         <BrowserRouter>
           <Header cart={manager.cartManager} />
           <Breadcrumbs manager={manager} />

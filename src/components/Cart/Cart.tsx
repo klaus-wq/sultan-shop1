@@ -9,7 +9,7 @@ interface CartProps {
     manager: Manager
 }
 
-export default function Cart({ manager }: CartProps) {
+export function Cart({ manager }: CartProps) {
     const [_updateState, setUpdateState] = useState(false);
     const [modalState, setModalState] = useState(false);
 
@@ -23,7 +23,7 @@ export default function Cart({ manager }: CartProps) {
     }
 
     return (
-        <>
+        <div data-testid="Cart">
             {
                 <div className={`${styles.cart__container} ${styles.container}`}>
                     <h1 className={styles.cart__title}>Корзина</h1>
@@ -69,6 +69,6 @@ export default function Cart({ manager }: CartProps) {
                 </div>
             }
             {Math.round(manager.cartManager.summTotal) !== 0 && modalState && <Modal onClose={() => { closeModal(); }} />}
-        </>
+        </div>
     )
 }

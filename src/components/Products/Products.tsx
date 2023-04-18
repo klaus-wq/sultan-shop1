@@ -9,12 +9,13 @@ import FilterLeftPanel from '../Filters/FilterLeftPanel/FilterLeftPanel'
 import styles from './styles.module.scss'
 
 export interface ProductsProps {
-    manager: Manager
+    manager: Manager;
+    defaultType?: number;
 }
 
-function Products({ manager }: ProductsProps) {
+export function Products({ manager, defaultType = 0 }: ProductsProps) {
     const [state, setState] = useState(false);
-    const [sortType, setSortType] = useState(0);
+    const [sortType, setSortType] = useState(defaultType);
     const [currentPage, setCurrentPage] = useState(0);
     const productsPerPage: number = 15;
 
@@ -45,10 +46,10 @@ function Products({ manager }: ProductsProps) {
                     <div className={styles.products__sort}>
                         <h3 className={styles.products__title}>Сортировка</h3>
                         <select className={styles.products__select} onChange={e => { setSortType(parseInt(e.target.value)) }}>
-                            <option value={0}><h3>Цена по возрастанию</h3></option>
-                            <option value={1}><h3>Цена по убыванию</h3></option>
-                            <option value={2}><h3>Название по возрастанию</h3></option>
-                            <option value={3}><h3>Название по убыванию</h3></option>
+                            <option value={0}>Цена по возрастанию</option>
+                            <option value={1}>Цена по убыванию</option>
+                            <option value={2}>Название по возрастанию</option>
+                            <option value={3}>Название по убыванию</option>
                         </select>
                     </div>
                     <div className={styles.products__cards}>
@@ -104,7 +105,7 @@ function Products({ manager }: ProductsProps) {
                         <button className={styles.products__arrow} onClick={() => currentPage !== 0 && setCurrentPage(currentPage - 1)}><img src={arrowLeft} alt="arrow-left" /></button>
                         <div className={styles.products__arrows}>
                             {getPageNumbers().map((p, i) => (
-                                <h5 className={styles.products__page + ' ' + (i === currentPage ? styles.products__pageActive : "")}
+                                <h5 key={i} className={styles.products__page + ' ' + (i === currentPage ? styles.products__pageActive : "")}
                                     onClick={() => {
                                         if (i !== currentPage) {
                                             setCurrentPage(i);
@@ -123,5 +124,3 @@ function Products({ manager }: ProductsProps) {
 
     );
 }
-
-export default Products;

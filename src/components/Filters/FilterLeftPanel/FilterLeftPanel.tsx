@@ -62,7 +62,7 @@ export default function FilterLeftPanel({ filter }: FilterProps) {
                             .filter(m => searchState === '' || m.toLowerCase().includes(searchState.toLowerCase()))
                             .slice(0, showState)
                             .map((m, i) => (
-                                <div className={styles.left__checkbox}>
+                                <div className={styles.left__checkbox} key={i}>
                                     <input type='checkbox'
                                         checked={filter.selectedManufacturers.includes(m)}
                                         onChange={e => { filter.selectManufacturer(m) }} />
@@ -90,9 +90,9 @@ export default function FilterLeftPanel({ filter }: FilterProps) {
                 </div>
                 <div className={styles.left__care}>
                     {Object.values(filter.careTypes).map((t, i) => (
-                        <>
+                        <div key={i}>
                             <h4 style={{ color: filter.selectedCareType === i ? "#111111" : '#5C6370' }} onClick={() => { filter.selectCareType(i) }}>{t}</h4>
-                        </>
+                        </div>
                     ))}
                 </div>
             </div>
